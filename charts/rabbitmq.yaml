@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: rabbitmq
+  namespace: rabbitmq
+  annotations:
+    fluxcd.io/automated: "false"
+    filter.fluxcd.io/chart-image: glob:dev-*
+spec:
+  releaseName: rabbitmq
+  chart:
+    git: https://github.com/bitnami/charts.git
+    path: bitnami/rabbitmq
+    ref: master
+  values:
